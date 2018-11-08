@@ -61,7 +61,7 @@ include('inc/header.php');
 <div class="films">
   <?php
     foreach ($movies as $movie) {
-      echo '<a href="detail.php?id='. $movie['id'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
+      echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
     }
 
    ?>
