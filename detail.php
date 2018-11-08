@@ -22,8 +22,17 @@ $movie = $query -> fetch();
 include('inc/header.php');
 
 ?>
+<ul>
+  <li><?php echo '<img src="posters/'.$movie['id'].'.jpg" alt="">'?></li>
+  <li><?php echo $movie['year'] ;?></li>
+  <li><?php echo $movie['genres'] ;?></li>
+  <li><?php echo $movie['plot'] ;?></li>
+  <li><?php echo $movie['directors'] ;?></li>
+  <li><?php echo $movie['cast'] ;?></li>
+  <li><?php echo $movie['writers'] ;?></li>
+  <li><?php echo $movie['runtime'] ;?></li>
+</ul>
 
- <p><?php echo $movie['title'] ;?></p> 
 
 
 
