@@ -21,7 +21,9 @@ include('inc/header.php');
 <!-- Il y a une div id container autour du body  -->
 
 <!-- <a href="detail.php?id= -->
-
+<div class="more_films">
+  <a href="index.php">Plus de films</a>
+</div>
 <div class="films">
   <?php
     foreach ($movies as $movie) {
