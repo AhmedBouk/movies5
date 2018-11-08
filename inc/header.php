@@ -19,7 +19,18 @@
     <header>
       <a href="index.php"> <img src="asset/img/logo.jpg" alt="logo"> </a>
       <h2>Le carnet du cinéaste</h2>
+      <div class="compte">
 
+        <div class="co_ins">
+        <p><a href="#">Connexion</a> / <a href="#">Inscription</a></p>
+        </div>
+
+        <div class="deco">
+        <p>Bienvenue Ahmed</p>
+        <p><a href="#">Deconnexion</a></p>
+        </div>
+
+      </div>
     </header>
-
+<div class="clear"></div>
     <div id="container">
