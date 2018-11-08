@@ -4,7 +4,7 @@ include('inc/fonctions.php');
 
 
 $title = 'Home';
-include('inc/header.php');
+
 
 
 
@@ -15,7 +15,7 @@ $movies = $query -> fetchall();
 // debug($movies);
 
 
-
+include('inc/header.php');
 
 ?>
 <!-- Il y a une div id container autour du body  -->
@@ -25,7 +25,7 @@ $movies = $query -> fetchall();
 <div class="films">
   <?php
     foreach ($movies as $movie) {
-      echo '<a href="detail.php?id="'.$movie['id'].'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
+      echo '<a href="detail.php?id='. $movie['id'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
     }
 
    ?>
