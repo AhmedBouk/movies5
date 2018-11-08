@@ -17,6 +17,10 @@ h1{
 
 /* HEADER */
 
+header {
+  height: 100px;
+}
+
 header a img{
   width: 10%;
   margin-left: 3%;
@@ -26,16 +30,22 @@ header a img{
 
 header h2{
   text-align: center;
-  
-
+  font-size: 2em;
 }
 
+
+
+header .compte .co_ins{
+  display: none;
+}
 /* BODY */
 
 
 
 /* FOOTER */
-
+footer p{
+  text-align: center;
+}
 
 /* 404 */
 
