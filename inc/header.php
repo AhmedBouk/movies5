@@ -21,15 +21,15 @@
       <h2>Le carnet du cinéaste</h2>
       <div class="compte">
 
-        <div class="co_ins">
-        <p><a href="#">Connexion</a> / <a href="#">Inscription</a></p>
-        </div>
-
-        <div class="deco">
-        <p>Bienvenue Ahmed</p>
-        <p><a href="#">Deconnexion</a></p>
-        </div>
-
+        <?php
+          if (is_logged()==false) {
+            echo '<li> <a href="inscription.php"> Inscription </a> </li>
+            <li> <a href="connexion.php"> Connexion </a> </li>';
+          }else{
+            echo '<p>Bienvenue : '. $_SESSION['user']['pseudo'] .' </p> <br/>
+            <li> <a href="deconnexion.php"> Deconnexion </a> </li>';
+          }
+?>
       </div>
     </header>
 <div class="clear"></div>
