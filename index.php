@@ -21,13 +21,11 @@ foreach ($genres as $genre) {
       if(!empty($ex)){
         $tableau[] = $ex;
       }
-      // debug($ex);
     }
   }
-
 }
 
-
+debug($tableau);
 
 
 $sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 50 ";
@@ -49,7 +47,16 @@ include('inc/header.php');
 <!-- filtre catégories -->
 
 <div class="categories">
-  <input type="checkbox" name="genres" value="">
+<form action="" method="post">
+
+  <ul><?php
+    foreach ($tableau as $x) {
+      echo '<li><input type="text" name="" value=""></li>'
+    ;}
+?></ul>
+
+</form>
+
 </div>
 <div class="films">
   <?php
