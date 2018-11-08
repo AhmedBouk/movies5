@@ -23,11 +23,11 @@
 
         <?php
           if (is_logged()==false) {
-            echo '<li> <a href="inscription.php"> Inscription </a> </li>
-            <li> <a href="connexion.php"> Connexion </a> </li>';
+            echo '<p> <a href="inscription.php"> Inscription </a> </li>
+            <li> <a href="connexion.php"> Connexion </a> </p>';
           }else{
             echo '<p>Bienvenue : '. $_SESSION['user']['pseudo'] .' </p> <br/>
-            <li> <a href="deconnexion.php"> Deconnexion </a> </li>';
+            <p> <a href="deconnexion.php"> Deconnexion </a> </p>';
           }
 ?>
       </div>
