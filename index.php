@@ -25,7 +25,7 @@ foreach ($genres as $genre) {
   }
 }
 
-debug($tableau);
+// debug($tableau);
 
 
 $sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 50 ";
@@ -51,7 +51,7 @@ include('inc/header.php');
 
   <ul><?php
     foreach ($tableau as $x) {
-      echo '<li><input type="text" name="" value=""></li>'
+      echo '<li><input type="checkbox" name="" value="">'.$x.'</li>'
     ;}
 ?></ul>
 
