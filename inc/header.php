@@ -2,9 +2,9 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Bienvenue sur votre base de donnée de films" />
+    <meta name="keywords" content="base de donnée, database, cinema, movie, film" />
+    <meta name="author" content="Ahmed, Camille, Emilie, Jonathan" />
     <meta name="robots" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $title; ?> </title>
@@ -15,16 +15,11 @@
   <![endif]-->
   </head>
   <body>
-    <h1> referencement </h1>
+    <h1> base de donnée, database, cinema, movie, film </h1>
     <header>
-      <nav>
-        <ul>
-          <li> <a href="index.php"> Home </a> </li>
-          <li> <a href="#">  </a> </li>
-          <li> <a href="#">  </a> </li>
-          <li> <a href="#">  </a> </li>
-        </ul>
-      </nav>
+      <a href="index.php"> <img src="asset/img/logo.jpg" alt="logo"> </a>
+      <h2>Le carnet du cinéaste</h2>
+
     </header>
 
     <div id="container">

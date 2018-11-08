@@ -3,9 +3,9 @@ include('inc/pdo.php');
 include('inc/fonctions.php');
 
 
-
-include('inc/header.php');
 $title = 'Home';
+include('inc/header.php');
+
 
 
 
