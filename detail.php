@@ -5,6 +5,7 @@ include('inc/fonctions.php');
 // titre de la page//
 $title = 'Detail';
 $droitVote = true;
+$error = array();
 
 if(!empty($_GET['slug'])) {
 
@@ -54,13 +55,45 @@ if(!empty($_GET['slug'])) {
   die('404');
 }
 
+if(!empty($_POST['submitrate'])) {
+
+  $rate = clean('note');
+
+  if(!empty($rate)) {
+    if(is_numeric($rate) < 0) {
+      // $error['note'] = 'la note doit être supérieure à 0';
+      die('404');
+    } elseif(is_numeric($rate) > 100) {
+      // $error['note'] = 'la note doit être inferieure à 100';
+      die('404');
+    } else {
+      $sql= "SELECT * FROM movies_full WHERE slug=:slug";
+      // preparation de la requête
+      $query = $pdo -> prepare($sql);
+      $query->bindValue(':slug',$slug, PDO::PARAM_STR);
+      // execution de la requête preparé
+      $query -> execute();
+      $movie = $query -> fetch();
+
+      $sql = "UPDATE `m5_filmsavoir` SET `note`= :note,`update_at`= now()  WHERE id_users = :iduser AND id_movies = :idmovie";
+
+       $query = $pdo->prepare($sql);
+       $query->bindValue(':note',$rate);
+       $query->bindValue(':iduser',$idSession);
+       $query->bindValue(':idmovie',$movie['id']);
+       $query->execute();
+
+    }
+  }
+}
+
 include('inc/header.php');
 ?>
   <!-- les détails du films avec comme classe descritpion  -->
 
 <ul class="description">
       <li>  <?php echo '<img src="posters/'.$movie['id'].'.jpg" alt="">'?></li>
-      <li> Titre : <?php echo $movie['title'] ;?> </li>
+      <li>  Titre : <?php echo $movie['title'] ;?> </li>
       <li>  Date de sortie : <?php echo $movie['year'] ;?></li>
       <li>  Genre : <?php echo $movie['genres'] ;?> </li>
       <li>  De : <?php echo $movie['directors'] ;?> </li>
@@ -83,17 +116,18 @@ include('inc/header.php');
 <?php } ?>
 
 
-
+<?php if(is_logged()) {
+$idSession = $_SESSION['user']['id'];
+$slug = $_GET['slug'];
+  ?>
 <form method="post" action="">
-<input type="hidden" name="" value="''">
-<select name="rating">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
+<input type="hidden" name="note" value="">
+<select name="note">
+<?php for ($rater=0; $rater <=100 ; $rater++) {
+  echo '<option value="'. $rater .'">'. $rater .'</option>';
+} ?>
 </select>
-<input type="submit" value="Note">
+<input type="submit" name="submitrate" value="Note">
 </form>
-
+<?php } ?>
 <?php include('inc/footer.php');
