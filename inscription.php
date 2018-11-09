@@ -1,6 +1,7 @@
 <?php
 include('inc/fonctions.php');
 include('inc/pdo.php');
+$title = 'Inscription';
 
 $error =array();
 
@@ -84,7 +85,7 @@ if (!empty($_POST['submitted'])) {
 
 
 include('inc/header.php');
-$title = 'inscription';
+
 ?>
 
 <!-- Formulaire d'inscription -->
