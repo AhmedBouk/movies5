@@ -26,8 +26,6 @@ foreach ($genres as $genre) {
 }
 
 // debug($tableau);
-
-
 $sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 50 ";
 $query = $pdo -> prepare($sql);
 $query -> execute();
