@@ -58,7 +58,7 @@ include('inc/header.php');
 
 <!-- Bouton film -->
 <div class="more_films">
-  <a href="index.php">Plus de films</a>
+  <p><a href="index.php">Plus de films</a></p>
 </div>
 
 
@@ -66,24 +66,28 @@ include('inc/header.php');
 <form action="" method="post">
 
   <!-- Selection date -->
-  <label for="selectionDate">Selectionner une periode</label>
-  <select class="" name="year">
-           <option value="none" selected="selected"></option>
-           <option value="1880-1889">1880-1889</option>
-           <option value="1890-1899">1890-1899</option>
-           <option value="1900-1909">1900-1909</option>
-           <option value="1910-1919">1910-1919</option>
-           <option value="1920-1929">1920-1929</option>
-           <option value="1930-1939">1930-1939</option>
-           <option value="1940-1949">1940-1949</option>
-           <option value="1950-1959">1950-1959</option>
-           <option value="1960-1969">1960-1969</option>
-           <option value="1970-1979">1970-1979</option>
-           <option value="1980-1989">1980-1989</option>
-           <option value="1990-1999">1990-1999</option>
-           <option value="2000-2009">2000-2009</option>
-           <option value="2010-2018">2010-2018</option>
-</select>
+ <div class="selectionD">
+    <label for="selectionDate">Selectionner une période</label>
+    <select class="annee" name="year">
+             <option value="none" selected="selected"></option>
+             <option value="1880-1889">1880-1889</option>
+             <option value="1890-1899">1890-1899</option>
+             <option value="1900-1909">1900-1909</option>
+             <option value="1910-1919">1910-1919</option>
+             <option value="1920-1929">1920-1929</option>
+             <option value="1930-1939">1930-1939</option>
+             <option value="1940-1949">1940-1949</option>
+             <option value="1950-1959">1950-1959</option>
+             <option value="1960-1969">1960-1969</option>
+             <option value="1970-1979">1970-1979</option>
+             <option value="1980-1989">1980-1989</option>
+             <option value="1990-1999">1990-1999</option>
+             <option value="2000-2009">2000-2009</option>
+             <option value="2010-2018">2010-2018</option>
+     </select>
+ </div>
+
+ <br>
 
 
 
@@ -104,14 +108,17 @@ include('inc/header.php');
 
 </form>
 
+<!-- Categories films -->
+
 </div>
 <div class="films">
+  <ul>
   <?php
     foreach ($movies as $movie) {
-      echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
+      echo '<li><a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a></li>';
     }
-
    ?>
+   </ul>
 </div>
 
 
