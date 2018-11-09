@@ -64,7 +64,6 @@ include('inc/header.php');
 
 <!-- Formulaire -->
 <form action="" method="post">
-
   <!-- Selection date -->
   <label for="selectionDate">Selectionner une periode</label>
   <select class="" name="year">
@@ -84,9 +83,6 @@ include('inc/header.php');
            <option value="2000-2009">2000-2009</option>
            <option value="2010-2018">2010-2018</option>
 </select>
-
-
-
   <!-- filtre catégories -->
   <div class="categories">
   <ul>
@@ -94,20 +90,15 @@ include('inc/header.php');
     foreach ($tableau as $x) {
       echo '<li><input type="checkbox" name="" value="'.$x.'">'.$x.'</li>'
     ;}
-
-?>
-
+    ?>
 <!-- Bouton rechercher -->
-<input type="submit" name="submitted" value="Rechercher">
-
-</ul>
-
+      <input type="submit" name="submitted" value="Rechercher">
+    </ul>
 </form>
 
 </div>
 <div class="films">
   <?php if ($actif == false){
-
   foreach ($movies as $movie) {
     echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a><p> '.$movie['year'].'</p><p>'.$movie['title'].'</p><p>'.$movie['genres'].'</p>';
   }
@@ -115,7 +106,6 @@ include('inc/header.php');
   ?>
   <?php
   if ($actif == true){
-
   foreach ($filmSelections as $filmSelection) {
     echo '<a href="detail.php?slug='. $filmSelection['slug'] .'"><img src="posters/'.$filmSelection['id'].'.jpg" alt="'.$filmSelection['title'].'"></a><p> '.$filmSelection['year'].'</p><p>'.$filmSelection['title'].'</p><p>'.$filmSelection['genres'].'</p>';
   }
