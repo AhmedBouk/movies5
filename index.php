@@ -64,8 +64,8 @@ include('inc/header.php');
 
 <!-- Formulaire -->
 <form action="" method="post">
-
   <!-- Selection date -->
+
  <div class="selectionD">
     <label for="selectionDate">Sélectionner une période : </label>
     <select class="annee" name="year">
