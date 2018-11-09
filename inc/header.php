@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $title; ?> </title>
     <link rel="stylesheet" href="asset/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
     <!-- Le commentaire suivant fait en sorte que Internet expolorer 9 fonctionne avec html 5 -->
   <!--[if lt IE 9]>
     <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,14 +20,14 @@
   <body>
     <h1> base de donnée, database, cinema, movie, film </h1>
     <header>
-      <a href="index.php"> <img src="asset/img/logo.jpg" alt="logo"> </a>
+      <a href="index.php"> <img src="asset/img/logo.png" alt="logo"> </a>
       <h2>Le carnet du cinéaste</h2>
       <div class="compte">
 
         <?php
           if (is_logged()==false) {
             echo '<p> <a href="inscription.php"> Inscription </a> </li>
-            <li> <a href="connexion.php"> Connexion </a> </p>';
+            <p> <a href="connexion.php"> Connexion </a> </p>';
           }else{
             echo '<p>Bienvenue : '. $_SESSION['user']['pseudo'] .' </p> <br/>
             <p> <a href="deconnexion.php"> Deconnexion </a> </p>';

@@ -49,7 +49,11 @@ include('inc/header.php');
 
   <ul><?php
     foreach ($tableau as $x) {
+<<<<<<< HEAD
+      echo '<li><input type="checkbox" name="" value=""></li>'
+=======
       echo '<li><input type="checkbox" name="" value="">'.$x.'</li>'
+>>>>>>> 74e8f57a81c6699d8ceedf07b63d5b871199756b
     ;}
 ?></ul>
 
@@ -66,11 +70,6 @@ include('inc/header.php');
 </div>
 
 
-<?php
-
-
-
-  ?>
 
 
 
