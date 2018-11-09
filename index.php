@@ -113,9 +113,10 @@ include('inc/header.php');
 </div>
 <div class="films">
   <ul>
-  <?php if ($actif == false){
+  <?php if ($actif == false){ ?>
+    <li>
 
-  foreach ($movies as $movie) {
+  <?php foreach ($movies as $movie) {
     echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a><p> '.$movie['year'].'</p><p>'.$movie['title'].'</p><p>'.$movie['genres'].'</p>';
   }
 }
@@ -128,7 +129,8 @@ include('inc/header.php');
   }
 }
    ?>
-   </ul>
+    </li>
+  </ul>
 </div>
 
 
