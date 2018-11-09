@@ -20,22 +20,29 @@
   <body>
     <h1> base de donnée, database, cinema, movie, film </h1> <!-- Reférencement -->
     <header>
+
       <!-- Le logo  -->
       <a href="index.php"> <img src="asset/img/logo.png" alt="logo"> </a>
+
       <!-- Le titre du site -->
-      <h2>Le carnet du cinéaste</h2>
+      <div class="titre">
+        <h2>Le carnet du cinéaste</h2>
+      </div>
+
       <!-- Inscription / connexion / deconnexion -->
       <div class="compte">
         <?php
           if (is_logged()==false) {
             echo '<p> <a href="inscription.php"> Inscription </a> </li>
             <p> <a href="connexion.php"> Connexion </a> </p>';
+             br();
           }else{
             echo '<p>Bienvenue : '. $_SESSION['user']['pseudo'] .' </p> <br/>
             <p> <a href="deconnexion.php"> Deconnexion </a> </p>';
           }
 ?>
       </div>
+      <div class="clear"></div>
     </header>
 <div class="clear"></div>
     <div id="container">

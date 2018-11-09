@@ -10,7 +10,6 @@ include('inc/header.php') ?>
 				<h2><span>4</span><span>0</span><span>4</span></h2>
 			</div>
 			<p>Nous sommes désolé, nous ne trouvons pas la page</p>
-			<p>Non</p>
 		</div>
 	</div>
 

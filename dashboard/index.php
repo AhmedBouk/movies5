@@ -1,10 +1,10 @@
 <?php
 include('inc/pdo.php');
-include('inc/fonction.php');
+include('inc/fonctions.php');
 
 
 
-include('inc/header.php');
+
 $title = 'Home';
 
 
@@ -15,7 +15,7 @@ $title = 'Home';
 
 
 
-
+include('inc/header.php');
 ?>
 <!-- Il y a une div id container autour du body  -->
 
