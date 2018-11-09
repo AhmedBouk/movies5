@@ -6,7 +6,7 @@ include('inc/fonctions.php');
 $title = 'Home';
 
 // Recuperation des donnes de la table movies_full
-$sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 10 ";
+$sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 12 ";
 $query = $pdo -> prepare($sql);
 $query -> execute();
 $movies = $query -> fetchall();
@@ -67,7 +67,7 @@ include('inc/header.php');
 
   <!-- Selection date -->
  <div class="selectionD">
-    <label for="selectionDate">Selectionner une période</label>
+    <label for="selectionDate">Sélectionner une période : </label>
     <select class="annee" name="year">
              <option value="none" selected="selected"></option>
              <option value="1880-1889">1880-1889</option>
@@ -89,48 +89,49 @@ include('inc/header.php');
 
  <br>
 
-
-
   <!-- filtre catégories -->
   <div class="categories">
-  <ul>
-  <?php
-    foreach ($tableau as $x) {
-      echo '<li><input type="checkbox" name="" value="'.$x.'">'.$x.'</li>'
-    ;}
+    <ul>
+      <?php
+        foreach ($tableau as $x) {
+          echo '<li><input type="checkbox" name="" value="'.$x.'">'.$x.'</li>'
+        ;}
+      ?>
 
-?>
+      <!-- Bouton rechercher -->
+      <input type="submit" name="submitted" value="Rechercher">
+    </ul>
 
-<!-- Bouton rechercher -->
-<input type="submit" name="submitted" value="Rechercher">
+    </form>
 
-</ul>
-
-</form>
-
-<!-- Categories films -->
+    <!-- Categories films -->
 
 </div>
 <div class="films">
-  <ul>
-  <?php if ($actif == false){ ?>
-    <li>
 
-  <?php foreach ($movies as $movie) {
-    echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a><p> '.$movie['year'].'</p><p>'.$movie['title'].'</p><p>'.$movie['genres'].'</p>';
-  }
-}
-  ?>
+
+        <?php
+    if ($actif == false){
+
+
+    foreach ($movies as $movie) {
+      echo '<div class="film"><a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a><p> '.$movie['year'].'</p><h2>'.$movie['title'].'</h2><p>'.$movie['genres'].'</p></div>';
+    }
+  } ?>
+
+
+
   <?php
-  if ($actif == true){
 
-  foreach ($filmSelections as $filmSelection) {
-    echo '<a href="detail.php?slug='. $filmSelection['slug'] .'"><img src="posters/'.$filmSelection['id'].'.jpg" alt="'.$filmSelection['title'].'"></a><p> '.$filmSelection['year'].'</p><p>'.$filmSelection['title'].'</p><p>'.$filmSelection['genres'].'</p>';
+    if ($actif == true){
+
+    foreach ($filmSelections as $filmSelection) {
+      echo '<div class=""><a href="detail.php?slug='. $filmSelection['slug'] .'"><img src="posters/'.$filmSelection['id'].'.jpg" alt="'.$filmSelection['title'].'"></a><p> '.$filmSelection['year'].'</p><p>'.$filmSelection['title'].'</p><p>'.$filmSelection['genres'].'</p></div>';
+    }
   }
-}
-   ?>
-    </li>
-  </ul>
+     ?>
+
+
 </div>
 
 
