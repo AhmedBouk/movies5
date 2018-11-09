@@ -2,13 +2,13 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Bienvenue sur votre base de donnée de films" />
-    <meta name="keywords" content="base de donnée, database, cinema, movie, film" />
-    <meta name="author" content="Ahmed, Camille, Emilie, Jonathan" />
+    <meta name="description" content="Bienvenue sur votre base de donnée de films" /> <!-- Texte qui aparaitra dans les moteur de recherche -->
+    <meta name="keywords" content="base de donnée, database, cinema, movie, film" /> <!-- reférencement -->
+    <meta name="author" content="Ahmed, Camille, Emilie, Jonathan" /> <!-- Les auteurs du site -->
     <meta name="robots" content=""/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- meta permetant d'utiliser les media query pour le responsive -->
     <title> <?php echo $title; ?> </title>
-    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="asset/css/style.css"> <!-- Les liens vers le css et les polices en ligne -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
   	<link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
@@ -18,12 +18,14 @@
   <![endif]-->
   </head>
   <body>
-    <h1> base de donnée, database, cinema, movie, film </h1>
+    <h1> base de donnée, database, cinema, movie, film </h1> <!-- Reférencement -->
     <header>
+      <!-- Le logo  -->
       <a href="index.php"> <img src="asset/img/logo.png" alt="logo"> </a>
+      <!-- Le titre du site -->
       <h2>Le carnet du cinéaste</h2>
+      <!-- Inscription / connexion / deconnexion -->
       <div class="compte">
-
         <?php
           if (is_logged()==false) {
             echo '<p> <a href="inscription.php"> Inscription </a> </li>
