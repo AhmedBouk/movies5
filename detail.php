@@ -129,5 +129,18 @@ $slug = $_GET['slug'];
 </select>
 <input type="submit" name="submitrate" value="Note">
 </form>
-<?php } ?>
+<?php }
+$youpi ='oh';
+echo $youpi;
+?>
+<?php
+    if(!empty($_GET['note'])) {
+      if(is_logged()) {
+        $ratestar = $_GET['note'];
+          if($ratestar>1 && $ratestar<=20){
+          $youpi = 'youpi';
+        }}}
+
+?>
+
 <?php include('inc/footer.php');
