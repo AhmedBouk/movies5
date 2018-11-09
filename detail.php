@@ -44,4 +44,16 @@ include('inc/header.php');
 </form>
 
 
+<form method="post" action="">
+<input type="hidden" name="" value="''">
+<select name="rating">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+<input type="submit" value="Note">
+</form>
+
 <?php include('inc/footer.php');
