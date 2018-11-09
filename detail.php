@@ -2,46 +2,86 @@
 include('inc/pdo.php');
 include('inc/fonctions.php');
 
-
+// titre de la page//
 $title = 'Detail';
+$droitVote = true;
 
+if(!empty($_GET['slug'])) {
 
+  // requete du titre du film  avec son slug (titre et date film)
+  $slug = $_GET['slug'];
+  $sql= "SELECT * FROM movies_full WHERE slug=:slug";
+  // preparation de la requête
+  $query = $pdo -> prepare($sql);
+  $query->bindValue(':slug',$slug, PDO::PARAM_STR);
+  // execution de la requête preparé
+  $query -> execute();
+  $movie = $query -> fetch();
+  if(!empty($movie)) {
+    if(is_logged()) {
+      $idSession = $_SESSION['user']['id'];
+      $sql = "SELECT * FROM m5_filmsavoir WHERE id_users = :iduser AND id_movies = :idmovie";
+      $query = $pdo->prepare($sql);
+      // Protection injections SQL
+      $query->bindValue(':iduser',$idSession);
+      $query->bindValue(':idmovie',$movie['id']);
+      // execution de la requête preparé
+      $query->execute();
+      $note = $query->fetch();
+      if(!empty($note)) { $droitVote = false;}
 
+      if(!empty($_POST['submitted'])) {
+        $idmovierecup = trim(strip_tags($_POST['movie']));
+        if($idmovierecup == $movie['id']) {
+          // requete ajout de film dans base de donnée m5_filmsavoir
+           $sql = "INSERT INTO m5_filmsavoir( id_users, id_movies,note,	created_at)
+                   VALUES ( :idusers, :idmovies,null, NOW())";
 
+            $query = $pdo->prepare($sql);
+            $query->bindValue(':idusers',$idSession);
+            $query->bindValue(':idmovies',$idmovierecup);
+            $query->execute();
+            $droitVote = false;
 
-
-$slug = $_GET['slug'];
-$sql= "SELECT * FROM movies_full WHERE slug=:slug";
-$query = $pdo -> prepare($sql);
-$query->bindValue(':slug',$slug, PDO::PARAM_STR);
-$query -> execute();
-$movie = $query -> fetch();
-
-
+            // redirection vers la page des films àà voir +++!!!
+        }
+      }
+    }
+  } else {
+    die('404');
+  }
+} else {
+  die('404');
+}
 
 include('inc/header.php');
-
 ?>
-<ul class= "description" >
-  <li>  <?php echo '<img src="posters/'.$movie['id'].'.jpg" alt="">'?></li>
-  <li> <p> Titre : <?php echo $movie['title'] ;?></p> </li>
-  <li> <p> Date de sortie : <?php echo $movie['year'] ;?><p></li>
-  <li> <p> Genre : <?php echo $movie['genres'] ;?> <p></li>
-  <li> <p> De : <?php echo $movie['directors'] ;?> <p></li>
-  <li> <p> Avec : <?php echo $movie['cast'] ;?><p></li>
-  <li> <p> Durée : <?php echo $movie['runtime'] ;?> min<p></li>
-  <li> <p> Classification des films : <?php echo $movie['mpaa'] ;?> <p></li>
-  <li> <p> Note : <?php echo $movie['rating'] ;?> notes <p></li>
-  <li> <p> Popularité : <?php echo $movie['popularity'] ;?><p></li>
-  <li> <h2>SYNOPSIS ET DÉTAILS </h2><br> <?php echo $movie['plot'] ;?></li>
+  <!-- les détails du films avec comme classe descritpion  -->
 
+<ul class="description">
+      <li>  <?php echo '<img src="posters/'.$movie['id'].'.jpg" alt="">'?></li>
+      <li> Titre : <?php echo $movie['title'] ;?> </li>
+      <li>  Date de sortie : <?php echo $movie['year'] ;?></li>
+      <li>  Genre : <?php echo $movie['genres'] ;?> </li>
+      <li>  De : <?php echo $movie['directors'] ;?> </li>
+      <li>  Avec : <?php echo $movie['cast'] ;?></li>
+      <li>  Durée : <?php echo $movie['runtime'] ;?> min</li>
+      <li>  Classification des films : <?php echo $movie['mpaa'] ;?> <p></li>
+      <li>  Note : <?php echo $movie['rating'] ;?> notes </li>
+      <li>  Popularité : <?php echo $movie['popularity'] ;?></li>
+      <li> <h2>SYNOPSIS ET DÉTAILS </h2><br> <?php echo $movie['plot'] ;?></li>
 </ul>
 
-<form class="favorisfilm" action="" method="post">
-  <label for="ajouté"></label>
-  <input type="button" name="ajouté" value="à regarder">
+<!-- bouton ajout de film dans la base de donné m5_filmsavoir -->
 
-</form>
+
+<?php if(is_logged() && $droitVote){ ?>
+  <form action="" method="post">
+      <input type="hidden" name="movie" value="<?php echo $movie['id']; ?>">
+      <input type="submit" name="submitted" value="film à voir">
+  </form>
+<?php } ?>
+
 
 
 <form method="post" action="">
