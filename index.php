@@ -91,6 +91,7 @@ include('inc/header.php');
   <div class="categories">
   <ul><?php
     foreach ($tableau as $x) {
+
       echo '<li><input type="checkbox" name="" value="">'.$x.'</li>'
     ;}
 
