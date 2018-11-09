@@ -6,7 +6,7 @@ include('inc/fonctions.php');
 $title = 'Home';
 
 // Recuperation des donnes de la table movies_full
-$sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 50 ";
+$sql = "SELECT * FROM movies_full ORDER BY rand() LIMIT 10 ";
 $query = $pdo -> prepare($sql);
 $query -> execute();
 $movies = $query -> fetchall();
@@ -42,9 +42,9 @@ foreach ($genres as $genre) {
     $query -> bindValue(':annee1', $choixDate[0], PDO::PARAM_STR);
     $query -> bindValue(':annee2', $choixDate[1], PDO::PARAM_STR);
     $query -> execute();
-    $filmSelection = $query -> fetchAll();
+    $filmSelections = $query -> fetchAll();
 
-debug($filmSelection);
+// debug($genre);
   }
   else {
     $actif = FALSE;
@@ -89,10 +89,10 @@ include('inc/header.php');
 
   <!-- filtre catégories -->
   <div class="categories">
-  <ul><?php
+  <ul>
+  <?php
     foreach ($tableau as $x) {
-
-      echo '<li><input type="checkbox" name="" value="">'.$x.'</li>'
+      echo '<li><input type="checkbox" name="" value="'.$x.'">'.$x.'</li>'
     ;}
 
 ?>
@@ -106,11 +106,20 @@ include('inc/header.php');
 
 </div>
 <div class="films">
-  <?php
-    foreach ($movies as $movie) {
-      echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
-    }
+  <?php if ($actif == false){
 
+  foreach ($movies as $movie) {
+    echo '<a href="detail.php?slug='. $movie['slug'] .'"><img src="posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a><p> '.$movie['year'].'</p><p>'.$movie['title'].'</p><p>'.$movie['genres'].'</p>';
+  }
+}
+  ?>
+  <?php
+  if ($actif == true){
+
+  foreach ($filmSelections as $filmSelection) {
+    echo '<a href="detail.php?slug='. $filmSelection['slug'] .'"><img src="posters/'.$filmSelection['id'].'.jpg" alt="'.$filmSelection['title'].'"></a><p> '.$filmSelection['year'].'</p><p>'.$filmSelection['title'].'</p><p>'.$filmSelection['genres'].'</p>';
+  }
+}
    ?>
 </div>
 
